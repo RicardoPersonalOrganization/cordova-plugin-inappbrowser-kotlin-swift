@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+set -e
+
+# Simple Gradle launcher that downloads a specified Gradle distribution
+# if not already present in the project and then runs the gradle binary.
+
+GRADLE_VERSION=7.4.2
+DIST_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
+INSTALL_DIR="$BASE_DIR/.gradle/gradle-${GRADLE_VERSION}"
+GRADLE_BIN="$INSTALL_DIR/bin/gradle"
+
+if [ ! -x "$GRADLE_BIN" ]; then
+    echo "Gradle ${GRADLE_VERSION} not found. Downloading from ${DIST_URL}..."
+    TMP_ZIP="$(mktemp /tmp/gradle-XXXXXX.zip || mktemp)"
+    if command -v curl >/dev/null 2>&1; then
+        curl -L -o "$TMP_ZIP" "$DIST_URL"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -O "$TMP_ZIP" "$DIST_URL"
+    else
+        echo "Error: curl or wget is required to download Gradle." >&2
+        exit 1
+    fi
+
+    mkdir -p "$BASE_DIR/.gradle"
+    unzip -q "$TMP_ZIP" -d "$BASE_DIR/.gradle"
+    rm -f "$TMP_ZIP"
+    if [ ! -x "$GRADLE_BIN" ]; then
+        echo "Error: failed to install Gradle to $INSTALL_DIR" >&2
+        exit 1
+    fi
+fi
+
+exec "$GRADLE_BIN" "$@"

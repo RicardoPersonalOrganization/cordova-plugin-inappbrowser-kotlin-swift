@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-inappbrowser-kotlin-swift" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+  <name>cordova-plugin-inappbrowser-kotlin-swift</name>
+
+  <js-module src="www/inappbrowser.js" name="InAppBrowser">
+    <clobbers target="cordova.InAppBrowser" />
+    <clobbers target="window.cordova.InAppBrowser" />
+  </js-module>
+
+  <platform name="android">
+    <source-file src="src/android/InAppBrowser.kt" target-dir="src/main/java/org/apache/cordova/inappbrowser" />
+
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.INTERNET" />
+    </config-file>
+
+  </platform>
+
+  <platform name="ios">
+    <source-file src="src/ios/InAppBrowser.swift" />
+  </platform>
+
+  <engines>
+    <engine name="cordova" version=">=10.0.0" />
+    <engine name="cordova-android" version=">=15.0.0" />
+    <engine name="cordova-ios" version=">=8.0.0" />
+  </engines>
+
+  <keywords>
+    <keyword>cordova</keyword>
+    <keyword>inappbrowser</keyword>
+  </keywords>
+</plugin>

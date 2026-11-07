@@ -1,0 +1,11 @@
+<manifest package="com.example.androiddemo" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="33" />
+    <application android:label="Android Demo" android:allowBackup="false" android:usesCleartextTraffic="false">
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

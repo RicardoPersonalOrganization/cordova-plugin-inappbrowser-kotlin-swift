@@ -1,0 +1,42 @@
+{
+  "name": "cordova-plugin-inappbrowser-kotlin-swift",
+  "version": "0.1.0",
+  "description": "Cordova InAppBrowser plugin with native Kotlin (Android) and Swift (iOS) implementations.",
+  "main": "www/inappbrowser.js",
+  "keywords": ["cordova", "inappbrowser", "kotlin", "swift", "cordova-plugin"],
+  "author": "Ricardo Faria <ricardomsf2@hotmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<user>/cordova-plugin-inappbrowser-kotlin-swift.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<user>/cordova-plugin-inappbrowser-kotlin-swift/issues"
+  },
+  "homepage": "https://github.com/<user>/cordova-plugin-inappbrowser-kotlin-swift#readme",
+  "files": [
+    "plugin.xml",
+    "www/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "jest --runInBand",
+    "lint": "eslint ."
+  },
+  "cordova": {
+    "id": "cordova-plugin-inappbrowser-kotlin-swift",
+    "platforms": ["android", "ios"]
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "cordova": ">=11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "@cordova/eslint-config": "^6.0.1",
+    "jest": "^29.5.0",
+    "jsdom": "^22.1.0"
+  }
+}
